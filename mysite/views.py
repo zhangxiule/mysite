@@ -1,7 +1,8 @@
 from django.http import HttpResponse
+from django.shortcuts import render_to_response
 
 
-def hello_world(request):
-    return HttpResponse("Hello World!!!")
+def home(request):
+    return render_to_response('blog/home.html')
 
 

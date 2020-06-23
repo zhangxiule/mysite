@@ -1,0 +1,19 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+    {{ blog_type.type_name}}
+{% endblock %}
+
+{% block content %}
+    <hr>
+    <h3>当前类别：{{ blog_type.type_name }}</h3>
+    {% for blog in blogs %}
+    <a href="{% url 'blog_detail' blog.pk %}">
+        <h3>{{ blog.id}}. {{ blog.title }}</h3>
+    </a>
+    <p>{{ blog.content|truncatechars:30 }}</p>
+    {% empty %}
+    <p>-- 暂无博客，敬请期待 --</p>
+    {% endfor %}
+    <p>一共有{{ blogs|length }}篇博客</p>
+{% endblock %}
